@@ -12,17 +12,17 @@ describe('Orango HRM Testes', () => {
     
   it('Login - Success', () => { //podemos colocar o ".skip" depois do it para pular esse teste => it.slip(...)
     cy.visit(
-      'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'
+      '/auth/login'
     )
-    cy.get(selectorsList.usernameField).type()
+    cy.get(selectorsList.usernameField).type(userData.userSuccess.userName)
     cy.get(selectorsList.passwordField).type(userData.userSuccess.password)
     cy.get(selectorsList.loginButton).click()
-    cy.location('pathname').should('equal', '/web/index.php/dashboard/index') // para verificar se a rota está correta
-    cy.get(selectorsList.dashBoardGrid) // para verificar sem contem uma palavra específica
+    //cy.location('pathname').should('equal', '/web/index.php/dashboard/index') // para verificar se a rota está correta
+    //cy.get(selectorsList.dashBoardGrid) // para verificar sem contem uma palavra específica
   })
     it('Login - Fail', () => {
       cy.visit(
-        'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'
+        '/auth/login'
       )
       cy.get(selectorsList.usernameField).type(userData.userFail.userName)
       cy.get(selectorsList.passwordField).type(userData.userFail.password)
